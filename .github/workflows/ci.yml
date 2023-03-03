@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn -ntp -B verify
     - name: send custom message
       uses: appleboy/telegram-action@master
       with:
