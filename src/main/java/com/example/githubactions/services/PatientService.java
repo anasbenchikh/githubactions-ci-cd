@@ -37,4 +37,9 @@ public class PatientService {
             throw new IllegalArgumentException();
         return patientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("The patient with the id " + id + "is not found"));
     }
+
+    public void deletePatient(int id) {
+        this.patientRepository.deleteById(id);
+    }
+
 }
