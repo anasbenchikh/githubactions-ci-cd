@@ -29,4 +29,4 @@ jobs:
         TELEGRAM_CHAT: ${{ secrets.TELEGRAM_TO }}
         message: |
               The event triggered final step.
-              echo This event is a pull request that had an assignee removed and messge should be changed.
+              echo This event is a pull request that had an assignee removed and message should be changed.
