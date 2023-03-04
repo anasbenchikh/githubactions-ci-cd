@@ -25,8 +25,8 @@ jobs:
     - name: send custom message
       uses: Lukasss93/telegram-action@v2
       env:
-        TELEGRAM_TOKEN: ${{ secrets.telegram_token }}
-        TELEGRAM_CHAT: ${{ secrets.telegram_chat }}
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        TELEGRAM_CHAT: ${{ secrets.TELEGRAM_TO }}
         message: |
               The event triggered final step.
               echo This event is a pull request that had an assignee removed and messge should be changed.
