@@ -22,11 +22,25 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package -DskipTests --file pom.xml
+  
+    - name: JIB container build and publish
+      uses: MathieuSoysal/jib-container-publish.yml@v2.0.7
+      with:
+        PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+        image: anasbenchikh/cicd-demo
+        tags: v1, latest
+        registry: registry-url.io
+        dockerfile: Dockerfile.ci
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
     - name: send custom message
       uses: Lukasss93/telegram-action@v2
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT: ${{ secrets.TELEGRAM_TO }}
         message: |
-              The event triggered final step.
+              The ${{ github.event_name }} event triggered final step.
               echo This event is a pull request that had an assignee removed and message should be changed.
