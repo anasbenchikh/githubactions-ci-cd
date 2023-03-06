@@ -66,10 +66,20 @@
 				<version>3.1.4</version>
 				<configuration>
 					<from>
-						<image>gcr.io/distroless/java:17</image>
-					</from> <!-- or ":8" -->
+						<image>eclipse-temurin:17</image>
+						<platforms>
+							<platform>
+								<architecture>arm64</architecture>
+								<os>linux</os>
+							</platform>
+							<platform>
+								<architecture>amd64</architecture>
+								<os>linux</os>
+							</platform>
+						</platforms>
+					</from>
 					<to>
-						<image>ghcr.io/anasbenchikh/cicd-demo</image>
+						<image>docker.io/anasbenchikh/cicd-demo</image>
 					</to>
 				</configuration>
 			</plugin>
