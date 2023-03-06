@@ -23,10 +23,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package -DskipTests --file pom.xml
   
-    - name: JIB container build and publish
-      uses: MathieuSoysal/jib-container-publish.yml@v2.0.7
-      with:
-        PASSWORD: ${{ secrets.TOKEN_GIT }}
+
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
