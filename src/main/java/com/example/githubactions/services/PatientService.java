@@ -38,7 +38,9 @@ public class PatientService {
         return patientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("The patient with the id " + id + "is not found"));
     }
 
-    public void deletePatient(int id) {
+    public void deletePatient(Integer id) {
+        if (id == null)
+            return;
         this.patientRepository.deleteById(id);
     }
 

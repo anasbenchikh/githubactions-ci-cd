@@ -36,9 +36,13 @@ jobs:
       run: mvn jib:build
     - name: send custom message
       uses: appleboy/telegram-action@master
-      env:
-        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        TELEGRAM_CHAT: ${{ secrets.TELEGRAM_TO }}
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-              The ${{ github.event_name }} event triggered final step.
-              echo This event is a pull request that had an assignee removed and message should be changed.
+          ${{ github.actor }} created commit:
+          Commit message: ${{ github.event.commits[0].message }}
+          
+          Repository: ${{ github.repository }}
+          
+          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
